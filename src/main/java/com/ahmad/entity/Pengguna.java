@@ -15,5 +15,5 @@ public class Pengguna {
     private String alamat;
     private String hp;
     private String roles; // "admin" or "pelanggan"
-    private String isAktif; // "aktif" or "nonaktif"
+    private Boolean isAktif; 
 }
