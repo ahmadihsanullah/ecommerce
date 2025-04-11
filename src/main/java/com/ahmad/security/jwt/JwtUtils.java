@@ -1,10 +1,5 @@
 package com.ahmad.security.jwt;
 
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.MalformedJwtException;
-import io.jsonwebtoken.security.Keys;
-import io.jsonwebtoken.JwtParser;
-
 import java.util.Date;
 
 import javax.crypto.SecretKey;
@@ -17,13 +12,13 @@ import org.springframework.stereotype.Component;
 
 import com.ahmad.security.service.UserDetailsImpl;
 
-import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.MalformedJwtException;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.UnsupportedJwtException;
 import io.jsonwebtoken.io.Decoders;
-import io.jsonwebtoken.security.SignatureException;
-import java.security.Key;
+import io.jsonwebtoken.security.Keys;
 
 @Component
 public class JwtUtils {
