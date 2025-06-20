@@ -9,6 +9,8 @@ spring:
         hikari:
             connection-timeout: 20000
             maximum-pool-size: 5
+        ports:
+            - "5432:5432"
     jpa:
         hibernate:
             ddl-auto: update
