@@ -26,6 +26,8 @@ public class JwtUtils {
 
     @Value("${jwt.expirationMs}")
     private int jwtExpirationMs;
+    @Value("${jwt.refreshExpirationMs}")
+    private int refreshExpirationMs;
     @Value("${jwt.secret}")
     private String jwtSecret;
 
@@ -58,6 +60,18 @@ public class JwtUtils {
                 .compact();
     }
 
+    public String generateResfreshToken(Authentication authentication) {
+        UserDetailsImpl principal = (UserDetailsImpl) authentication.getPrincipal();
+        
+        return Jwts.builder()
+                .setSubject(principal.getUsername())
+                .setIssuedAt(new Date())
+                .setExpiration(new Date((new Date()).getTime() + refreshExpirationMs))
+                .signWith(getSigningKey(), SignatureAlgorithm.HS512)
+                .compact();
+    }
+
+
     public String getUserNameFromJwtToken(String token) {
         return Jwts.parser()
                 .verifyWith(getSigningKey())
@@ -66,6 +80,7 @@ public class JwtUtils {
                 .getPayload()
                 .getSubject();
     }
+
 
     private SecretKey getSigningKey() {
         byte[] keyBytes = Decoders.BASE64.decode(jwtSecret);

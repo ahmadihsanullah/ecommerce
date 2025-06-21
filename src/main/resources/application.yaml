@@ -22,3 +22,4 @@ spring:
 jwt:
     expirationMs: 3600000
     secret: yC2rMJfQHRMiAOUf5ZsR2YZ+sn3Y2JRhUtHkyoWhK0Km0YrD6XVaROkIoE8rRUSppdODssm3GPYMQYrjOBDJyQ==
+    refreshExpirationMs : 360000000
